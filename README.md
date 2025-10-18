@@ -32,7 +32,7 @@ This project tackles early identification of diabetes risk using routine clinica
 
 ---
 
-## What I did (short version)
+## What I did (short overview)
 
 1. **EDA:** Looked at distributions, outliers, correlations. Class split ≈ **35% positive / 65% negative**. `Glucose` and `BMI` correlated most with `Outcome`.
 2. **Cleaning:** Replaced impossible zeros with `NaN`, **median-imputed**, and added `*_Missing` flags so models can learn from missingness patterns.
@@ -64,7 +64,7 @@ This project tackles early identification of diabetes risk using routine clinica
 | Random Forest |   0.734  |    0.651  |  0.519 | 0.805 |
 | KNN (k=8)     |   0.747  |    0.692  |  0.500 | 0.780 |
 
-**Plain-English takeaways**
+**Takeaways**
 - **KNN (k=8)**: best **Accuracy** and **Precision**, solid **Recall**  
 - **Random Forest**: best **Recall** and **AUC** (strongest at finding positives and separating classes)  
 - **Decision Tree**: weakest overall but useful as a transparent baseline
