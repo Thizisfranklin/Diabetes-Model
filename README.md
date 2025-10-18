@@ -1,4 +1,4 @@
-# Diabetes Risk Prediction (Pima Indians)
+# DiabetesWatch: diabetes risk predictor
 
 I built a small, end-to-end project to predict diabetes risk from routine clinical measurements. The goal is simple: **catch high-risk patients early** so a care team can prioritize follow-ups and preventive care.
 
