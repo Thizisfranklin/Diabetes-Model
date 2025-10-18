@@ -53,7 +53,7 @@ I built a small, end-to-end project to predict diabetes risk from routine clinic
 
 ### Colab
 1. Upload `diabetes.csv` to `/content`.
-2. Run `diabetes_classification.py` or paste the single-cell version from the repo.
+2. Run `Lab7_Osualaaham.ipynb` or paste the single-cell version from the repo.
 3. Check the printed metrics.
 
 ### Local
@@ -61,4 +61,4 @@ I built a small, end-to-end project to predict diabetes risk from routine clinic
 python -m venv .venv && source .venv/bin/activate   # or use conda
 pip install -U pandas numpy scikit-learn matplotlib seaborn
 # put diabetes.csv in the repo root
-python diabetes_classification.py
+python Lab7_Osualaaham.ipynb
