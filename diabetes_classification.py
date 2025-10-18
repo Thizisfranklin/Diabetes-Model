@@ -2,7 +2,7 @@
 diabetes_classification.py
 ==========================
 
-This script performs an end‑to‑end machine‑learning workflow on the
+This script is an experimental end‑to‑end machine‑learning workflow on the
 Pima‑Indians diabetes dataset.  The following steps are covered:
 
 1. **Data loading and inspection** – read the CSV file and display
