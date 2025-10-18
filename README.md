@@ -78,8 +78,71 @@ My default **ship-ready baseline** is **Random Forest** for its recall/AUC profi
 3. Review printed metrics and plots (ROC/AUC included).
 
 ### Local
+
+#### Run the script
 ```bash
 python -m venv .venv && source .venv/bin/activate   # or use conda
 pip install -U pandas numpy scikit-learn matplotlib seaborn
 # put diabetes.csv in the repo root
-python dLab7_Osualaaham.ipynb
+python diabetes_classification.py
+```
+
+#### (optional) install Jupyter
+```
+pip install -U jupyter
+```
+
+#### launch and open the notebook
+```
+jupyter lab             # or: jupyter notebook
+# then open: Lab7_Osualaaham.ipynb
+```
+
+---
+
+## ⚠️ Potential Biases, Limitations & How to Improve
+
+**Population & sampling bias**
+- *Issue:* The dataset contains **adult female Pima-Indian patients** only; results may not generalize to other demographics or care settings.
+- *Improve:* Validate on external, multi-site cohorts with diverse age/sex/ethnicity; report subgroup metrics.
+
+**Measurement bias / disguised missingness**
+- *Issue:* Zeros in `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI` are **not physiologically plausible** and act as hidden missing data.
+- *Improve:* Use **multiple imputation** (e.g., MICE) with sensitivity analyses; push for better upstream data capture; log data quality KPIs.
+
+**Class imbalance & decision costs**
+- *Issue:* ~35% positive prevalence; raw accuracy can be misleading versus **recall/precision** trade-offs.
+- *Improve:* Use **cost-sensitive learning**, class weights, focal loss, threshold tuning on PR curves; report decision-curve analysis / utility.
+
+**Overfitting & small-N risk**
+- *Issue:* 768 rows; complex models can overfit.
+- *Improve:* **Nested cross-validation**, repeated stratified k-fold, stronger regularization; test stability via bootstrapping.
+
+**Temporal & domain drift**
+- *Issue:* Static historical snapshot; clinical processes and populations evolve.
+- *Improve:* Deploy **drift monitors** (covariate & performance), scheduled re-training, and model lineage/versioning.
+
+**Calibration & thresholding**
+- *Issue:* Raw scores may be miscalibrated, affecting alert thresholds.
+- *Improve:* **Platt scaling** or **isotonic regression**; pick thresholds tied to clinical capacity and downstream costs.
+
+**Interpretability & clinician trust**
+- *Issue:* KNN is opaque at global level; forests are partially interpretable.
+- *Improve:* **SHAP** for global/local explanations; provide case-level reason codes; clinician-in-the-loop review.
+
+**Data leakage controls**
+- *Issue:* Risk if imputation/scaling is fit on the full dataset.
+- *Improve:* **Pipelines** with transformations fit **inside CV folds**; rigorous train/test hygiene.
+
+---
+
+## 📚 References
+- **scikit-learn documentation**
+  - Preprocessing and scaling: https://scikit-learn.org/stable/modules/preprocessing.html  
+  - Nearest neighbors overview: https://scikit-learn.org/stable/modules/neighbors.html  
+  - ROC/AUC & model evaluation: https://scikit-learn.org/stable/modules/model_evaluation.html
+- **Dataset sources**
+  - Pima Indians Diabetes (UCI ML Repository): https://archive.ics.uci.edu/ml/datasets/Pima+Indians+Diabetes  
+  - Pima Indians Diabetes (Kaggle mirror): https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
+- **EDA note on disguised missingness (zeros → NaN)**
+  - Pima Indians Diabetes — Analysis & Predictions (obrunet.github.io): https://obrunet.github.io/pima-indians-diabetes-analysis-predictions
