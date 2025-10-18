@@ -2,6 +2,19 @@
 
 I built an end-to-end project to predict diabetes risk from routine clinical measurements. The goal is simple: **catch high-risk patients early** so care teams can prioritize follow-ups and preventive care.
 
+## Brief Description
+This project tackles early identification of diabetes risk using routine clinical measurements (Pima Indians dataset). I cleaned physiologically “impossible” zeros (e.g., Glucose, BMI) by imputing them, engineered risk-focused features (Glucose/Insulin ratio, Age×BMI), and built multiple models—Decision Tree, Random Forest, and K-Nearest Neighbors—to find a strong baseline. Models were evaluated on Accuracy, Precision, Recall, and AUC, with ROC curves used to compare discrimination. The goal is practical: **flag high-risk patients early** so care teams can prioritize follow-ups and preventive care.
+
+## What I Built
+- End-to-end DS workflow: EDA → cleaning/imputation → feature engineering → model training/tuning → evaluation/visualization  
+- Visuals: distributions, boxplots, correlation heatmap, ROC curves  
+- Reproducible script/notebook for training and metrics export
+
+## Tools Used
+- Python (3.10+), pandas, numpy, scikit-learn  
+- Matplotlib, seaborn (plots)  
+- Jupyter/Colab for experiments; Git/GitHub for versioning
+
 ---
 
 ## Why this exists
@@ -110,29 +123,6 @@ jupyter lab             # or: jupyter notebook
 - *Issue:* Zeros in `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI` are **not physiologically plausible** and act as hidden missing data.
 - *Improve:* Use **multiple imputation** (e.g., MICE) with sensitivity analyses; push for better upstream data capture; log data quality KPIs.
 
-**Class imbalance & decision costs**
-- *Issue:* ~35% positive prevalence; raw accuracy can be misleading versus **recall/precision** trade-offs.
-- *Improve:* Use **cost-sensitive learning**, class weights, focal loss, threshold tuning on PR curves; report decision-curve analysis / utility.
-
-**Overfitting & small-N risk**
-- *Issue:* 768 rows; complex models can overfit.
-- *Improve:* **Nested cross-validation**, repeated stratified k-fold, stronger regularization; test stability via bootstrapping.
-
-**Temporal & domain drift**
-- *Issue:* Static historical snapshot; clinical processes and populations evolve.
-- *Improve:* Deploy **drift monitors** (covariate & performance), scheduled re-training, and model lineage/versioning.
-
-**Calibration & thresholding**
-- *Issue:* Raw scores may be miscalibrated, affecting alert thresholds.
-- *Improve:* **Platt scaling** or **isotonic regression**; pick thresholds tied to clinical capacity and downstream costs.
-
-**Interpretability & clinician trust**
-- *Issue:* KNN is opaque at global level; forests are partially interpretable.
-- *Improve:* **SHAP** for global/local explanations; provide case-level reason codes; clinician-in-the-loop review.
-
-**Data leakage controls**
-- *Issue:* Risk if imputation/scaling is fit on the full dataset.
-- *Improve:* **Pipelines** with transformations fit **inside CV folds**; rigorous train/test hygiene.
 
 ---
 
