@@ -1,4 +1,4 @@
-# DiabetesWatch: diabetes risk predictor
+# DiabetesWatch
 
 I built an end-to-end project to predict diabetes risk from routine clinical measurements. The goal is simple: **catch high-risk patients early** so care teams can prioritize follow-ups and preventive care.
 
@@ -74,7 +74,7 @@ My default **ship-ready baseline** is **Random Forest** for its recall/AUC profi
 
 ### Colab
 1. Upload `diabetes.csv` to `/content`.
-2. Run `diabetes_classification.py` (or paste the single-cell version).
+2. Run `Lab7_Osualaaham.ipynb` (or paste the single-cell version).
 3. Review printed metrics and plots (ROC/AUC included).
 
 ### Local
@@ -82,4 +82,4 @@ My default **ship-ready baseline** is **Random Forest** for its recall/AUC profi
 python -m venv .venv && source .venv/bin/activate   # or use conda
 pip install -U pandas numpy scikit-learn matplotlib seaborn
 # put diabetes.csv in the repo root
-python diabetes_classification.py
+python dLab7_Osualaaham.ipynb
