@@ -1,6 +1,6 @@
 # DiabetesWatch
 
-I built an end-to-end project to predict diabetes risk from routine clinical measurements. The goal is simple: **catch high-risk patients early** so care teams can prioritize follow-ups and preventive care.
+I built an end-to-end model to predict diabetes risk from routine clinical measurements. The goal is simple: **catch high-risk patients early** so care teams can prioritize follow-ups and preventive care.
 
 ## Brief Description
 This project tackles early identification of diabetes risk using routine clinical measurements (Pima Indians dataset). I cleaned physiologically “impossible” zeros (e.g., Glucose, BMI) by imputing them, engineered risk-focused features (Glucose/Insulin ratio, Age×BMI), and built multiple models—Decision Tree, Random Forest, and K-Nearest Neighbors—to find a strong baseline. Models were evaluated on Accuracy, Precision, Recall, and AUC, with ROC curves used to compare discrimination. The goal is practical: **flag high-risk patients early** so care teams can prioritize follow-ups and preventive care.
